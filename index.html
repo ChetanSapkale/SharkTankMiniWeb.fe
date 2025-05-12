@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="skeleton.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Shark Tank India</title>
+  </head>
+
+  <body>
+    <nav>
+      <div>
+        <a href="index.html" id="home">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjVUEBUU7dTXTkU_pySu1N0Pd84NgrNoQnmA&usqp=CAU"
+          />
+        </a>
+      </div>
+      <ul>
+        <a href="AddToCart.html">
+          Add To Cart (<span id="cart-count">0</span>)</a
+        >
+      </ul>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="column"></div>
+      </div>
+
+      <div class="row">
+        <div class="columns four sidebar-one" id="sidebar-one">
+          <h4>Add Pitch</h4>
+          <input
+            type="text"
+            id="pitch-title"
+            class="u-full-width"
+            placeholder="Title"
+          />
+          <input
+            type="text"
+            id="pitch-image"
+            class="u-full-width"
+            placeholder="Image Url"
+          />
+          <input
+            type="text"
+            id="pitch-category"
+            class="u-full-width"
+            placeholder="Category"
+          />
+          <input
+            type="text"
+            id="pitch-founder"
+            class="u-full-width"
+            placeholder="Founder"
+          />
+          <input
+            type="number"
+            id="pitch-price"
+            class="u-full-width"
+            placeholder="Pitch Price"
+          />
+          <!-- <input
+            type="date"
+            id="pitch-year"
+            class="u-full-width"
+            placeholder="Year of foundation"
+          /> -->
+          <button id="add-pitch" class="u-full-width button button-primary">
+            Add Pitch
+          </button>
+          <hr />
+
+          <h4>update all fields of Pitch</h4>
+          <input
+            type="text"
+            id="update-pitch-id"
+            class="u-full-width"
+            placeholder="ID"
+          />
+          <input
+            type="text"
+            id="update-pitch-title"
+            class="u-full-width"
+            placeholder="Title"
+          />
+          <input
+            type="text"
+            id="update-pitch-image"
+            class="u-full-width"
+            placeholder="Image Url"
+          />
+          <input
+            type="text"
+            id="update-pitch-category"
+            class="u-full-width"
+            placeholder="Category"
+          />
+          <input
+            type="text"
+            id="update-pitch-founder"
+            class="u-full-width"
+            placeholder="Founder"
+          />
+          <input
+            type="number"
+            id="update-pitch-price"
+            class="u-full-width"
+            placeholder="Pitch Price"
+          />
+          <!-- <input
+            type="date"
+            id="update-pitch-year"
+            class="u-full-width"
+            placeholder="Year of foundation"
+          /> -->
+          <button id="update-pitch" class="u-full-width button button-primary">
+            Update all fields
+          </button>
+          <hr />
+
+          <h4>update only Price</h4>
+          <input
+            type="text"
+            id="update-price-pitch-id"
+            class="u-full-width"
+            placeholder="ID"
+          />
+          <input
+            type="number"
+            id="update-price-pitch-price"
+            class="u-full-width"
+            placeholder="Price"
+          />
+          <button
+            id="update-price-pitch"
+            class="u-full-width button button-primary"
+          >
+            Update pitch Price
+          </button>
+          <hr />
+
+          <h4>Sort Based On Price</h4>
+          <button
+            id="sort-low-to-high"
+            class="u-full-width button button-primary"
+          >
+            Sort Low To High
+          </button>
+          <button
+            id="sort-high-to-low"
+            class="u-full-width button button-primary"
+          >
+            Sort High To Low
+          </button>
+          <hr />
+
+          <h4>Filter Based On Category</h4>
+          <button id="filter-Food" class="u-full-width button button-primary">
+            Food
+          </button>
+          <button
+            id="filter-Electronics"
+            class="u-full-width button button-primary"
+          >
+            Electronics
+          </button>
+          <button
+            id="filter-Personal-Care"
+            class="u-full-width button button-primary"
+          >
+            Personal-Care
+          </button>
+        </div>
+
+        <div class="columns eight main">
+          <div class="search-pitch-wrapper" id="search-pitch-wrapper">
+            <select id="search-by-select">
+              <option value="">Search By</option>
+              <option value="title">Title</option>
+              <option value="founder">Founder</option>
+            </select>
+            <input
+              type="text"
+              id="search-by-input"
+              placeholder="Enter Title/Founder here"
+            />
+            <button
+              id="search-by-button"
+              style="background-color: #33c3f0; color: white; border: none"
+            >
+              Search
+            </button>
+          </div>
+          <div class="data-list-wrapper" id="data-list-wrapper">
+            <!-- append card-list that includes card here -->
+            <div class="card-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
+<script>
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  document.getElementById("cart-count").innerText = cart.length;
+</script>

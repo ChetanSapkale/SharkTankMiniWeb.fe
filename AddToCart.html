@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="skeleton.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div>
+        <a href="index.html" id="home">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjVUEBUU7dTXTkU_pySu1N0Pd84NgrNoQnmA&usqp=CAU"
+          />
+        </a>
+      </div>
+    </nav>
+    <div class="cart-container"></div>
+    </div>
+    <button style="margin: auto; display: block">
+      <a href="index.html">Continue Shopping</a>
+    </button>
+  </body>
+  <!-- <script src="main.js" type="module"></script> -->
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartContainer = document.querySelector(".cart-container");
+
+    cartContainer.innerHTML = "";
+
+    cartItems.forEach((item, index) => {
+      const itemDiv = document.createElement("div");
+      itemDiv.classList.add("cart-item");
+
+      itemDiv.innerHTML = `
+      <img src="${item.image}" style="height: 200px; width: 200px" />
+      <h5>${item.title}</h5>
+      <h5>$${item.price}</h5>
+      <button onclick="buyNow(${index})">Buy Now</button>
+      <button onclick="removeItem(${index})">Remove</button>
+    `;
+
+      cartContainer.appendChild(itemDiv);
+
+    });
+
+    const removeItem = (index) => {
+      cartItems.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      location.reload();
+    };
+
+    const buyNow = (index) => {
+      alert(`Purchased: ${cartItems[index].title}`);
+    };
+  </script>
+</html>

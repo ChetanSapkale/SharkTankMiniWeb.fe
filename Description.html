@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Description</title>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="skeleton.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+  <body>
+    <nav>
+      <div>
+        <a href="index.html" id="home">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjVUEBUU7dTXTkU_pySu1N0Pd84NgrNoQnmA&usqp=CAU"
+          />
+        </a>
+      </div>
+      <ul>
+        <a href="AddToCart.html">
+          Add To Cart (<span id="cart-count">0</span>)</a
+        >
+      </ul>
+    </nav>
+    <h1>Description Page</h1>
+    <div class="desc-container">
+      <img
+        id="image"
+        src="${image}"
+        alt=""
+        style="height: 30 0px; width: 300px"
+      />
+      <div class="text-content">
+        <h3 id="title">${title}</h3>
+        <h3 id="founder">Founder:- ${founder}</h3>
+        <h3 id="category">${category}</h3>
+        <h3 id="price">$${price}</h3>
+        <button><a href="" onclick="addToCart()">Add to Cart</a></button>
+        <button><a href="">Buy Now</a></button>
+      </div>
+    </div>
+  </body>
+
+  <!-- <script src="main.js" type="module"></script> -->
+
+  <script>
+    const dataFromUrl = new URLSearchParams(window.location.search);
+    const image = dataFromUrl.get("image");
+    const title = dataFromUrl.get("title");
+    const founder = dataFromUrl.get("founder");
+    const category = dataFromUrl.get("category");
+    const price = dataFromUrl.get("price");
+
+    document.getElementById("image").src = image;
+    document.getElementById("title").innerHTML = title;
+    document.getElementById("founder").innerHTML = founder;
+    document.getElementById("category").innerHTML = category;
+    document.getElementById("price").innerHTML = `$${price}`;
+
+    const addToCart = () => {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const product = {
+        image,
+        title,
+        founder,
+        category,
+        price,
+      };
+
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Item added to cart!");
+
+      document.getElementById("cart-count").innerText = cart.length;
+    };
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    document.getElementById("cart-count").innerText = cart.length;
+  </script>
+</html>
