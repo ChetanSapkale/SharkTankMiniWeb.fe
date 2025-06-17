@@ -19,6 +19,14 @@ A creative and responsive mini web application inspired by the Shark Tank busine
 
 ---
 
+## 📸 Preview
+
+![Herschel Clone Preview](![Screenshot 2025-06-17 152630](https://github.com/user-attachments/assets/12adb597-4362-4141-84f2-69cb1e1194ec)
+)
+)
+
+---
+
 ## 📌 Features
 
 - Multiple routes for startups, investors, and pitches
